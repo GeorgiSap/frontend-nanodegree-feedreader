@@ -94,13 +94,13 @@ $(function() {
 
     describe('New Feed Selection', function() {
         let feed = document.querySelector('.feed');
-        let feedBefore;
+        let feedInnerHTMLBefore;
 
         /* Calls the asynchronous loadFeed() function twice
          */
         beforeEach(function(done) {
             loadFeed(0, function() {
-                feedBefore = feed.innerHTML;
+                feedInnerHTMLBefore = feed.innerHTML;
                 loadFeed(1, done);
             });
 
@@ -110,7 +110,7 @@ $(function() {
          * the loadFeed function
          */
         it('content changes when a new feed is loaded', function() {
-            expect(feedBefore.innerHTML).not.toBe(feed.innerHTML);
+            expect(feedInnerHTMLBefore).not.toBe(feed.innerHTML);
         });
 
     });
