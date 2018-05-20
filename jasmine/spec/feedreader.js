@@ -48,9 +48,6 @@ $(function() {
         });
     });
 
-
-
-    /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
         const body = document.querySelector('body');
 
@@ -78,10 +75,6 @@ $(function() {
 
     describe('Initial Entries', function() {
         const feed = document.querySelector('.feed');
-
-        // Remember, loadFeed() is asynchronous so this test will require
-        // the use of Jasmine's beforeEach and asynchronous done() function.
-
 
         /* Calls the asynchronous loadFeed() function
          */
