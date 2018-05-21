@@ -74,8 +74,6 @@ $(function() {
     });
 
     describe('Initial Entries', function() {
-        const feed = document.querySelector('.feed');
-
         /* Calls the asynchronous loadFeed() function
          */
         beforeEach(function(done) {
@@ -86,8 +84,8 @@ $(function() {
          * when the loadFeed function is called and completes its work
          */
         it('there is at least a single .entry element within the .feed container', function() {
-            const entry = feed.querySelector('.entry');
-            expect(entry).not.toBeNull();
+            const entries = document.querySelector('.feed').querySelectorAll('.entry');
+            expect(entries.length).toBeGreaterThan(0);
         });
 
     });
