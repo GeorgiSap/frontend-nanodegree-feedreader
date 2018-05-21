@@ -91,24 +91,26 @@ $(function() {
     });
 
     describe('New Feed Selection', function() {
-        let feed = document.querySelector('.feed');
-        let feedInnerHTMLBefore;
+        const feed = document.querySelector('.feed');
+        let feedInnerHTMLBefore, feedInnerHTMLAfter;
 
-        /* Calls the asynchronous loadFeed() function twice
+        /* Calls the asynchronous loadFeed() function twice nested
          */
         beforeEach(function(done) {
             loadFeed(0, function() {
                 feedInnerHTMLBefore = feed.innerHTML;
-                loadFeed(1, done);
+                loadFeed(1, function() {
+                    feedInnerHTMLAfter = feed.innerHTML;
+                    done();
+                });
             });
-
         });
 
         /* Ensures the content changes when a new feed is loaded by 
          * the loadFeed function
          */
         it('content changes when a new feed is loaded', function() {
-            expect(feedInnerHTMLBefore).not.toBe(feed.innerHTML);
+            expect(feedInnerHTMLBefore).not.toBe(feedInnerHTMLAfter);
         });
 
     });
